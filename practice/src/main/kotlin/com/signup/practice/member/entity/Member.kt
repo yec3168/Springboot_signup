@@ -14,7 +14,7 @@ import java.time.LocalDate
 class Member (
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
     @Column(nullable = false, length = 30, updatable = false)
