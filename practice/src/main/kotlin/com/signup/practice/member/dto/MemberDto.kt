@@ -3,6 +3,7 @@ package com.signup.practice.member.dto
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.signup.practice.common.annotation.ValidEnum
 import com.signup.practice.common.status.Gender
+import com.signup.practice.member.entity.Member
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Pattern
@@ -70,4 +71,7 @@ data class MemberDto(
 
         private fun String.toLocalDate(): LocalDate =
                 LocalDate.parse(this, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+        fun toEntity(): Member =
+                Member(id, loginId, password, name, birthDate, gender, email)
 }

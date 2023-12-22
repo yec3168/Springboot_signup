@@ -1,5 +1,6 @@
 package com.signup.practice.member.controller
 
+import com.signup.practice.common.dto.BaseResponse
 import com.signup.practice.member.dto.MemberDto
 import com.signup.practice.member.service.MemberService
 import jakarta.validation.Valid
@@ -15,8 +16,9 @@ class signupController (
         private val memberService: MemberService
 ){
     @PostMapping("/signup")
-    fun signUp(@RequestBody @Valid memberDto: MemberDto):String{
-        return memberService.signUp(memberDto)
+    fun signUp(@RequestBody @Valid memberDto: MemberDto):BaseResponse<Unit>{
+        val resultMsg:String = memberService.signUp(memberDto)
+        return BaseResponse(message = resultMsg)
     }
     @GetMapping("/")
     fun hello():String{
